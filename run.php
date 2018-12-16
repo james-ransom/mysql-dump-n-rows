@@ -17,7 +17,6 @@ function get_all_tables($conn, $dbname, $ignore_keywords=array())
    	 	// output data of each row
     		while($row = $result->fetch_row()) {
 			$ignore = false; 
-			print_r($ignore_keywords);
 			foreach($ignore_keywords as $keyword) 
 			{
 				$ignore = strpos($row[0], $keyword) !== false; 
@@ -37,7 +36,7 @@ $tables = get_all_tables($conn, $dbname, $ignore);
 
 foreach($tables as $table) 
 {
-	$cmd = "mysqldump -u $username -p$password -h$servername --opt --where='1 limit 100'  $dbname $table; "; 
+	$cmd = "mysqldump -u $username -p$password -h$servername --opt --where='1 limit ".$max_rows_per_table."'  $dbname $table; "; 
 	system($cmd);
 }
 echo "\n";  
