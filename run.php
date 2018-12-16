@@ -30,19 +30,14 @@ function get_all_tables($conn, $dbname, $ignore_keywords=array())
                 	$tables[] = $row[0];
         	}
 	}
-	else {
-    		echo "0 results";
-	}
 	return $tables; 
 }
 
-$ignore = array("tmp", "temp", "__", "meta", "mysql");
 $tables = get_all_tables($conn, $dbname, $ignore); 
 
 foreach($tables as $table) 
 {
 	$cmd = "mysqldump -u $username -p$password -h$servername --opt --where='1 limit 100'  $dbname $table; "; 
-	echo "\nRunning: " . $cmd; 
 	system($cmd);
 }
 echo "\n";  
