@@ -15,5 +15,5 @@ Open creds.php file, and set these variables
 
 To use: 
 
-    ruby run.rb > all-tables-with-n-rows.sql 
+    php run.php > all-tables-with-n-rows.sql 
     
