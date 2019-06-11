@@ -1,6 +1,6 @@
 <?php
 
-require_once("creds.inc"); 
+require_once("creds.php"); 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
